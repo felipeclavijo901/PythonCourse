@@ -8,12 +8,13 @@ find_first_sum(nums, goal)  # [2, 3]
 """
 
 def check_first_sum(goal, nums):
-    seens = {}
+    seen = {}
     for idx, n in enumerate(nums):
         complement = goal - n
-        if complement in seens:
-            return (seens[complement], idx)
-        seens[n] = idx
+        if complement in seen:
+            print(seen)
+            return (seen[complement], idx)
+        if n not in seen: seen[n] = idx
 
 nums = [1, 4, 3, 4, 7, 5, 6, 2]
 goal = 8
