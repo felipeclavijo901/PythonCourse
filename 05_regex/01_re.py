@@ -55,6 +55,7 @@ else:
 ### Encontrar todas las coincidencias de un patrón
 # .findall() devuelve una lista con todas las coincidencias
 
+import re
 text = "Me gusta Python. Python es lo máximo. Aunque Python no es tan difícil, ojo con Python"
 pattern = "Python"
 
@@ -76,7 +77,13 @@ for match in matches:
 
 # EJERCICIO 02
 # Encuentra todas las ocurrencias de la palabra "midu" en el siguiente texto e indica en que posición empieza y termina cada coincidencia y cuantas veces se encontró.
+import re
 text = "Este es el curso de Python de midudev. ¡Suscríbete a midudev si te gusta este contenido! midu"
+matches = re.finditer("midu", text)
+print(f"La palabra midu se encontró {len(re.findall('midu', text))} veces en el texto:\n{text}\nEstás son las coincidencias:\n")
+for match in matches:
+  print(match.group(), match.start(), match.end(), sep=" | ")
+
 
 ### Modificadores
 
@@ -92,8 +99,10 @@ if found: print(found)
 
 # EJERCICIO 03
 # Encuentra todas las ocurrencias de la palabra "python" en el siguiente texto, sin distinguir entre mayúsculas y minúsculas.
+import re
 text = "Este es el curso de Python de midudev. ¡Suscríbete a python si te gusta este contenido! PYTHON"
 
+print(re.findall("python", text, flags=re.IGNORECASE))
 ### Reemplazar el texto
 
 # .sub() reemplaza todas las coincidencias de un patrón en un texto
